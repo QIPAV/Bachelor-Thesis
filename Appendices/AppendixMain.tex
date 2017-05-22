@@ -1,0 +1,137 @@
+\cleartoleftpage
+{
+\Hide
+\part{Appendices}
+}
+
+%\addcontentsline{toc}{part}{Appendices}
+\vapiqtitle{Appendices}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %% DOCUMENT HISTORY TABLE
+% %%%% VERSION NUMBER SHOULD ALWAYS BE THE SAME AS THE COMMENT WHEN SYNCED TO GITHUB %%%%%%%%%%%%%%%
+% \begin{center}
+% \textbf{\large Document History}\\
+% \begin{tabular}{cllll}
+% \rowcolor{cadetgrey}
+% \textbf{Version:}    &\textbf{Date:} 	 &\textbf{Comment:}    &\textbf{Done by:}   &\textbf{Approved by:}  \\
+% 1.0       & $04.05.17$       & Started Appendices  & SF    & SF          \\\rowcolor{gainsboro}
+
+% \end{tabular}                                                                   
+% \end{center}
+
+% \vspace*{3.0 cm}
+
+% %% ACRONYMS
+% \begin{center}
+% \textbf{\large Acronyms}\\
+% \begin{tabular}{ll}
+% \rowcolor{cadetgrey}
+%     &   \\
+% Aleksander Holthe      & AH     \\\rowcolor{gainsboro}
+% Katrine Sundal Haune  & KSH \\
+% Kent Kjeldaas         & KK \\\rowcolor{gainsboro}
+% Stian Fredriksen      & SF  \\
+% Tomas Lyngroth       & TL   \\\rowcolor{gainsboro}
+% Vanja Katinka Halvorsen     & VKH   \\
+% Variable Pitch Quadcopter   & VAPIQ \\\rowcolor{gainsboro}
+% Strategies of Action    & SOA
+
+% \end{tabular}                                                             
+% \end{center}
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \newpage
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% ABSTRACT
+%\subfile{1OrganizationalDocument/0ProjectAbstract}
+%\newpage
+
+% LIST OF STUFF
+\setcounter{section}{0}
+\setcounter{secnumdepth}{2}
+
+\startcontents  
+\setcounter{tocdepth}{2}
+\chapter*{\contentsname}
+\printcontents{}{0}{}
+
+\appendix
+\newpage
+
+
+%%%% Appendix  - #  - ###### %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subfile{Appendices/App#/Appendix#1}
+%\newpage
+
+%\subfile{Appendices/App#/Appendix#2}
+%\newpage
+
+%\subfile{Appendices/App#/Appendix#3}
+%\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%% Project Model %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subfile{Appendices/ProjectModel/ProjectModelMain}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%  Gantt  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subfile{Appendices/QTM/QTMMain}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%  Tasks  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subfile{Appendices/Tasks/TasksMain}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%  Group Contract  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subfile{Appendices/GroupContract/GroupContractMain}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%  Tables       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subfile{Appendices/Tables/TablesMain}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%  Risk Matrix  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subfile{Appendices/RiskMatrix/AppRiskMatrix}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%  Gantt  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subfile{Appendices/Gantt/GanttMain}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%% Flight Test Data  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subfile{Appendices/TestAndResults/TestAndResultsMain}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%  Code And Shit  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subfile{Appendices/Code/CodeMain}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%\subfile{1OrganizationalDocument/5organization}
+%\newpage
+
+%\subfile{1OrganizationalDocument/6projectplan}
+%\newpage
+
+%% References
+%\subfile{sections/references}
+%\newpage
+
+\stopcontents

@@ -1,0 +1,16 @@
+\vspace*{0.03cm}
+\section*{Why Qualisys Was Chosen}
+
+The main objective of this project is to compare a variable pitch quadcopter with a fixed pitch quadcopter. The tracking system will provide relevant data both for testing and research. Qualisys can be used as an sensor, which can provide an autonomous system with the data it needs to operate. If an autonomous system is implemented, it can provide reproducible research data eliminating the errors of a human pilot. It can also make it easier when testing for errors, by having the possibility to store and analyze motion data. For the teams disposal at KIC, there are eight Qualisys cameras. \\
+
+\section*{Kongsberg Innovation Center}
+The innovation center has a full Qualisys tracking system installed in one of their labs. Around the tracking area its possible to pull out a netting which can protect the quadcopter from crashing. The netting is setup so that the end is about the same spot as the end of the cameras field of view. Unfortunately it has a blindspot which needs to taken into account. \\
+
+\section*{Risks with Qualisys}
+
+There are some risks associated with committing to use this system, such as risks regarding equipment, availability and latency in communication.
+\\\\
+Another risk regarding the Qualisys system is that it might limit the update frequencies required to control the quadcopter. This is because of how Qualisys is designed, it uses reflecting spheres as shown in figure \ref{sphere}.
+The disadvantage is that all reflecting objects will have the potential to disturb the cameras. A worst case scenario would be that the motion capture system detects noise instead of one of the markers on the quadcopter. This can lead to a serious mistake in the calculation, resulting in a crash, potentially breaking components. This is a low risk, but has a medium to high probability. It is also a risk that the quadcopter can fly into the blindspot of the cameras. In this blindspot the system cab lose the position of the object, resulting in potential errors in the software. 
+\\\\
+Another risk is the precision of the system. The system needs to track the quadcopter which has to be quick and precise. Small biases and errors could lead to problems in the computation. In critical phases, if the latency is too high, it will limit how agile the quadcopter can be. Qualisys needs to be able to detect and track the small reflective spheres, to do this the markers must be visible for the cameras in flight. Autonomous control is another challenge in this project.  

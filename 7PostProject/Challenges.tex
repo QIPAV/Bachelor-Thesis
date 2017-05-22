@@ -1,0 +1,56 @@
+\chapter{Challenges}
+Hindsight occurs at the end of every successful and unsuccessful project. No matter how well a project has gone, there is always a way to do it better. While hindsight can feel useless and tends to come too late for any corrections, the information and experiences gained from success and failures can be shared for the success of future projects.\bigskip
+
+In this chapter some of the challenges that has occurred, the decisions made and our understanding of the project will be discussed. Many of the challenges involved in the project has been due to a combination of inadequate experience, undefined goals and requirements, scope changes, vendor quality issues and incorrect assumptions. None of the team members had much experience with quadcopters or similar fields before the project. \bigskip
+
+The ambition of creating everything from scratch, to fully understand every aspect of the system, has been time-consuming. At the beginning a lot of time was spent researching quadcopters to gain the knowledge needed to execute the objectives. However, no matter how much we read, lessons are best learned through doing, trail and error. At the beginning the project some assumptions were made that in later time showed to be incorrect. The initial concept of using a Pixhawk was discarded, but may have been a more viable option than first assumed.\bigskip
+
+The biggest challenge above all, has been electrical noise and mechanical vibrations resulting in corrupted sensor readings. One of the reasons for the excessive vibrations, has been resonance frequencies in the frame at the operating RPMs. It disturbed the sensor data, and test results show that readings while at rest could get as bad as $\pm$ 50 degrees in error. Communication in our interdisciplinary team has at times caused confusion. An example, of this is how the IMU was confused with the animal emu. The experience from working in an interdisciplinary team has changed us all and helped us become more open-minded to other fields. \bigskip
+
+The scope has changed twice during the project. The first time, when the latency in Qualisys turned out to be too large to be used as the only source of sensing. The second time, because the project scope was too large. To reduce the scope, some compromises had to be made. It was decided to implement a radio controller before going for the autonomous system.\bigskip
+
+Other challenges encountered during the project is, for example the deformations in the PVC-foam used in the frame. The deformations happened due to high temperatures and pressure underneath the motors. Other examples are:
+\begin{itemize}
+    \item The variable pitch mechanisms have been torn off due to high quality servos and logic faults in code. 
+    \item The first BEC regulator stopped working due to an unknown short circuit.
+    \item Small mechanical imprecision have been noticed to give high amounts of vibrations. 
+    \item Conflicting libraries, communication issues and latency have limited the system and its performance. The Arduino Nano is on the limit on what it can compute within the given time-frame.
+    \item Flying in acro-mode is difficult and multiple flight tests were needed to get used to fly the vehicle. 
+\end{itemize}
+
+Another struggle in our project, has been the quality and availability of variable pitch mechanisms. Different products from different vendors have been tested. Acquiring the right variable pitch mechanisms took a few tries to get right. Worldwide shipping was required to get all needed components, and the delivery times were often long. The probability of crashing while flying an experimental vehicle is high, so ordering enough spare parts was essential.\bigskip 
+
+
+
+%The mechanical  imperfections should be eliminated to reduce the vibration issues as much as possible.
+%har lært sjukt mye 
+
+%Unfortunately, this has not come without a cost and has led to misunderstandings and difficulties in setting the scope of this thesis.
+
+%Another challenge has been to meet the schools requirements, which are especially suited to product development, while our task is more focused on research, and does not fit into the typical school model. The requirements from the school and customer needs are not the same and need to be kept separate. %The ability to get new components and repairs quickly have helped keep up the momentum.
+%instead of with the user-friendly auto-level feature. This was done to preserve the agility of the variable pitch quadcopter. \\
+
+%If the vibrations  hawould have significantly reduced the overall performance of the entire system and project.
+
+%Vibrations have been huge challenge in this project and has limited the performance of the entire system.  
+
+%The MPU9250 proved to be stable, but always started with a offset. The offset was easily removed with a calibrating the quadcopter.
+
+%The hypothesis was confirmed and the vibrations nt significantly down when increasing the sampling frequency combined with the filter. 
+
+%The MPU 9250 was finally selected after changing the sensor type multiple times. The MPU 9250 provides us accelerometer, gyro and magnetometer data. 
+
+%It was discovered that the sampling frequency of the sensor was too low (around 23-31Hz) 
+
+%Another thing discovered was that the original sampling rate of the sensor was too slow (around 23-31Hz).  
+%Some communication challenges were encountered in the beginning of the project. It was difficult to get bluetooth connection to work properly. This was because of multiple broken bluetooth modules. The information from Qualisys was also harder to retrieve than first expected, and are currently working on getting the most recent information. It seems all the information is stored in a FIFO counter. The information provided seems to be the next in line when requesting with Qualisys software. This was fixed by adding multithreading to the off-board code. Making the threads handle the information provided by reading and updating. Another thread was used for handling the computation and communication with the quadrotor. Another more optimal solution could be to change some of the Qualisys software to add the information in a LIFO queue.
+
+
+%However this was too ambitious for a half-year project and later abandoned.
+%Another challenge has been the realization of simulated world. 
+%In a perfect world there would be no differences with a simulation and reality, but reality is always more complex. There is noise and external factors that mess with the simulations.\\
+
+%%Cost or development time could have been reduced. 
+%The product quality could have been increased.
+%Wrong assumptions lead to increased development time but also increased learning. 
+%More on this can be read in the concept discussion in the flight controller section in the technical document. \\

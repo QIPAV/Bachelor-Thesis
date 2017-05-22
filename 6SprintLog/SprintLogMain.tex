@@ -1,0 +1,108 @@
+\cleartoleftpage
+{
+\Hide
+\part{Sprint Log}
+}
+\vapiqtitle{Sprint Log}
+%% DOCUMENT HISTORY TABLE
+%%% This table should be updated with all major changes
+%%%% OBS! When syncing with Github, remember to leave comment corresponding with version number from this table
+\begin{center}
+\textbf{\Large Document History}\\
+\vspace*{0.2cm}
+\begin{tabular}{cllll}
+\rowcolor{cadetgrey}
+\textbf{Version:}    &\textbf{Date:} 	 &\textbf{Comment:}    &\textbf{Done by:}   &\textbf{Approved by:}  \\
+2.0       & $12.05.17$  & Finished version 2.0 & TL  & SF \\
+\end{tabular}                                                                   
+\end{center}
+
+\vspace*{3.0 cm}
+
+%% ABRIVIATIONS
+\begin{center}
+\textbf{\Large Abbreviations}\\
+\vspace*{0.2cm}
+\begin{tabular}{ll}
+\rowcolor{cadetgrey}
+    &   \\
+Pulse Width Modulation     & PWM \\\rowcolor{gainsboro}
+KONGSBERG Innovation Center & KIC \\
+Proportional Integrator Derivative  & PID \\\rowcolor{gainsboro}
+Inertial Measurement Unit & IMU \\
+Electric Speed Controller  & ESC \\\rowcolor{gainsboro}
+3D Robotics & 3DR \\
+Electronic Variable Pitch  & EVP \\\rowcolor{gainsboro}
+\end{tabular}                                                             
+\end{center}
+
+
+\vspace*{2cm}
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ABSTRACT
+%\subfile{Sections/Abstract}
+%\newpage
+
+% LIST OF STUFF
+\setcounter{section}{0}
+\setcounter{secnumdepth}{2}
+
+\startcontents  
+\setcounter{tocdepth}{2}
+\chapter*{\contentsname}
+\printcontents{}{0}{}
+
+\vspace*{1cm}
+
+\startlist{lof}
+\printlist{lof}{}{{\large\textbf{List of Figures}}}
+\vspace*{1cm}
+%\startlist{lot}
+%\printlist{lot}{}{{\large\textbf{List of Tables}}}
+\newpage
+
+%% SEE MAL-file
+
+% INTRODUCTION 
+\subfile{6SprintLog/0Introduction}
+\newpage
+
+
+\subfile{6SprintLog/Sprint1}
+\newpage
+
+\subfile{6SprintLog/Sprint2}
+\newpage
+
+\subfile{6SprintLog/Sprint3}
+\newpage
+
+\subfile{6SprintLog/Sprint4}
+\newpage
+
+\subfile{6SprintLog/Sprint5}
+\newpage
+
+\subfile{6SprintLog/Sprint6}
+\newpage
+
+\subfile{6SprintLog/Sprint7}
+\newpage
+
+\subfile{6SprintLog/Sprint8}
+\newpage
+
+%\subfile{6SprintLog/Sprint9}
+%\newpage
+
+% References
+%\subfile{Sections/references}
+
+
+\stopcontents
+%\stoplist{lof}
+%\stoplist{lot}

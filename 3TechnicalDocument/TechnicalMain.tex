@@ -1,0 +1,204 @@
+\cleartoleftpage
+{
+\Hide
+\part{Technical Document}
+}
+\vapiqtitle{Technical Document}
+
+%% DOCUMENT HISTORY TABLE
+%%% This table should be updated with all major changes
+%%%% OBS! When syncing with Github, remember to leave comment corresponding with version number from this table
+\begin{center}
+\textbf{\large Document History}\\
+\vspace*{0.2cm}
+\begin{tabular}{cllll}
+\rowcolor{cadetgrey}
+\textbf{Version:}    &\textbf{Date:} 	 &\textbf{Comment:}    &\textbf{Done by:}   &\textbf{Approved by:}  \\
+1.0   & $27.03.17$   & Created first official version  & TL  & SF \\
+\end{tabular}                                                   
+\end{center}
+
+\vspace*{0.5cm}
+
+\begin{center}
+\textbf{\large Abbreviations}\\
+\begin{tabular}{l|l}
+\rowcolor{cadetgrey}
+ & \\
+Variable Pitch Quadcopter   & VAPIQ\\\rowcolor{gainsboro}
+Norwegian Defence Research Establishment  & FFI\\
+University College of Southeast Norway & HSN \\\rowcolor{gainsboro}
+Variable Pitch Quadcopter & VPQ\\\rowcolor{gainsboro}
+Fixed Pitch Quadcopter & FPQ\\
+Variable Pitch Mechanism & VPM\\\rowcolor{gainsboro}
+Fixed Pitch Mechanism & FPM\\
+KONGSBERG Innovation Center & KIC \\\rowcolor{gainsboro}
+Automatic Identification of Markers & AIM\\
+Direction Cosine Matrix & DCM \\\rowcolor{gainsboro}
+Global Positioning System & GPS \\
+Qualisys Track Manager & QTM \\\rowcolor{gainsboro}
+Inertial Measurement Unit & IMU \\
+Microprocessor Unit & MPU \\\rowcolor{gainsboro}
+Computer Numerical Control & CNC \\
+Pulse Width Modulation & PWM \\\rowcolor{gainsboro}
+Proportional Integral Derivative & PID \\
+Degrees of Freedom & DOF \\\rowcolor{gainsboro}
+Graphical User Interface & GUI \\
+Electronic Speed Controller & ESC \\\rowcolor{gainsboro}
+Medium-Density Fiberboard & MDF \\
+Polyvinyl Chloride & PVC \\\rowcolor{gainsboro}
+Last in first out & LIFO \\
+First in first out & FIFO \\\rowcolor{gainsboro}
+Local Area Network & LAN \\
+3-dimentional & 3D \\\rowcolor{gainsboro}
+Radio Frequency & RF \\
+Finite Impulse Response & FIR \\\rowcolor{gainsboro}
+Infinite Impulse Response & IIR \\
+Low Pass & LP \\\rowcolor{gainsboro}
+Hertz & Hz \\
+Yaw & $\psi$ \\\rowcolor{gainsboro}
+Pitch & $\theta$  \\
+Roll & $\phi$  \\\rowcolor{gainsboro}
+Torque & $\tau$ \\
+Rotational Speed [rad/s] & $\omega$ \\\rowcolor{gainsboro}
+Acceleration & $a$ \\
+Velocity & $v$ \\\rowcolor{gainsboro}
+Displacement & $s$ \\
+Force & $f$ \\\rowcolor{gainsboro}
+Blade Pitch Angle & $\alpha$ \\
+Intertia & $I$  \\\rowcolor{gainsboro}
+Quaternion & $q$ \\
+Gravitational Force & $mg$ \\\rowcolor{gainsboro}
+Drag Coefficients & $b$  \\
+Current & $i$ \\\rowcolor{gainsboro}
+No-load Current & $i_0$ \\
+Voltage & $u$ \\\rowcolor{gainsboro}
+Mass & $m$ \\
+Lift Constant & $k$\\\rowcolor{gainsboro}
+\end{tabular}
+\end{center}
+\newpage
+
+
+% \begin{table}[h]
+%     \centering  \textbf{\Large Abbreviations}\bigskip
+    
+%         \begin{minipage}[b]{0.5\textwidth}
+% \begin{tabular}{l|l}
+% \rowcolor{cadetgrey}
+%  & \\
+% Variable Pitch Quadcopter   & VAPIQ\\\rowcolor{gainsboro}
+% Norwegian Defence Research Establishment  & FFI\\
+% University College of Southeast Norway & HSN \\\rowcolor{gainsboro}
+% Variable Pitch Quadcopter & VPQ\\\rowcolor{gainsboro}
+% Fixed Pitch Quadcopter & FPQ\\
+% Variable Pitch Mechanism & VPM\\\rowcolor{gainsboro}
+% Fixed Pitch Mechanism & FPM\\
+% KONGSBERG Innovation Center & KIC \\\rowcolor{gainsboro}
+% Automatic Identification of Markers & AIM\\
+% Direction Cosine Matrix & DCM \\\rowcolor{gainsboro}
+% Global Positioning System & GPS \\
+% Qualisys Track Manager & QTM \\\rowcolor{gainsboro}
+% Inertial Measurement Unit & IMU \\
+% Microprocessor Unit & MPU \\\rowcolor{gainsboro}
+% Computer Numerical Control & CNC \\
+% Pulse Width Modulation & PWM \\\rowcolor{gainsboro}
+% Proportional Integral Derivative & PID \\
+% Degrees of Freedom & DOF \\\rowcolor{gainsboro}
+% Graphical User Interface & GUI \\
+% Electronic Speed Controller & ESC \\\rowcolor{gainsboro}
+% Medium-Density Fiberboard & MDF \\
+% Polyvinyl Chloride & PVC \\\rowcolor{gainsboro}
+% Last in first out & LIFO \\
+% First in first out & FIFO \\\rowcolor{gainsboro}
+% Local Area Network & LAN \\
+% 3-dimentional & 3D \\\rowcolor{gainsboro}
+% Radio Frequency & RF \\
+% Finite Impulse Response & FIR \\\rowcolor{gainsboro}
+% Infinite Impulse Response & IIR \\
+% Low Pass & LP \\\rowcolor{gainsboro}
+% Hertz & Hz \\
+% \end{tabular}
+%         \end{minipage}
+% \hfill
+%     \begin{minipage}[t]{0.45\textwidth}
+% \begin{tabular}{l|l}
+% \rowcolor{cadetgrey}
+% & \\
+% Yaw & $\psi$ \\\rowcolor{gainsboro}
+% Pitch & $\theta$  \\
+% Roll & $\phi$  \\\rowcolor{gainsboro}
+% Torque & $\tau$ \\
+% Rotational Speed [rad/s] & $\omega$ \\\rowcolor{gainsboro}
+% Acceleration & $a$ \\
+% Velocity & $v$ \\\rowcolor{gainsboro}
+% Displacement & $s$ \\
+% Force & $f$ \\\rowcolor{gainsboro}
+% Blade Pitch Angle & $\alpha$ \\
+% Intertia & $I$  \\\rowcolor{gainsboro}
+% Quaternion & $q$ \\
+% Gravitational Force & $mg$ \\\rowcolor{gainsboro}
+% Drag Coefficients & $b$  \\
+% Current & $i$ \\\rowcolor{gainsboro}
+% No-load Current & $i_0$ \\
+% Voltage & $u$ \\\rowcolor{gainsboro}
+% Mass & $m$ \\
+% Lift Constant & $k$\\\rowcolor{gainsboro}
+% \end{tabular}
+%     \end{minipage}
+
+% \end{table} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% LIST OF STUFF
+\setcounter{section}{0}
+\setcounter{secnumdepth}{2}
+
+\startcontents  
+\setcounter{tocdepth}{2}
+\chapter*{\contentsname}
+\printcontents{}{0}{}
+
+\vspace*{1cm}
+
+\startlist{lof}
+\printlist{lof}{}{{\large\textbf{List of Figures}}}
+\vspace*{1cm}
+\startlist{lot}
+\printlist{lot}{}{{\large\textbf{List of Tables}}}
+\newpage
+
+% INTRODUCTION 
+\subfile{3TechnicalDocument/1Introduction}
+\newpage
+
+\subfile{3TechnicalDocument/2ExistingTechnology}
+\newpage
+
+\subfile{3TechnicalDocument/6MechDesign}
+\newpage
+
+\subfile{3TechnicalDocument/5ElectricalDesign}
+\newpage
+
+\subfile{3TechnicalDocument/3MathematicalModel}
+\newpage
+
+\subfile{3TechnicalDocument/4FlightController}
+\newpage
+
+\subfile{3TechnicalDocument/5ControlSystem}
+\newpage
+
+
+\subfile{3TechnicalDocument/7vibrations}
+\newpage
+
+
+% References
+%\subfile{Sections/References}
+
+\stopcontents
+\stoplist{lof}
+\stoplist{lot}

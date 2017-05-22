@@ -1,0 +1,72 @@
+\cleartoleftpage
+{
+\Hide
+\part{Backlog and Traceability}
+}
+\vapiqtitle{Backlog and Traceability}
+
+
+%%%%%%%%%   DOCUMENT HISTORY TABLE   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% This table should be updated with all major changes
+%%%% OBS! When syncing with Github, remember to leave comment corresponding with version number from this table
+\begin{center}
+\textbf{\Large Document History}\\
+\begin{tabular}{cllll}
+\rowcolor{cadetgrey}
+\textbf{Version:}    &\textbf{Date:} 	 &\textbf{Comment:}    &\textbf{Done by:}   &\textbf{Approved by:}  \\
+4.0       & $17.05.17$   & Version 4.0 finished  & SF  & VKH \\
+\end{tabular}                                                                   
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\vspace*{3.0 cm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+% ABSTRACT
+%\subfile{1OrganizationalDocument/0ProjectAbstract}
+%\newpage
+
+% LIST OF STUFF
+\setcounter{section}{0}
+\setcounter{secnumdepth}{2}
+
+\startcontents  
+\setcounter{tocdepth}{2}
+\chapter*{\contentsname}
+\printcontents{}{0}{}
+
+\vspace*{1cm}
+
+\startlist{lof}
+\printlist{lof}{}{{\large\textbf{List of Figures}}}
+\vspace*{1cm}
+\startlist{lot}
+\printlist{lot}{}{{\large\textbf{List of Tables}}}
+\newpage
+
+
+
+
+\subfile{4BacklogAndTraceability/Introduction}
+\newpage
+
+% Scrum
+\subfile{4BacklogAndTraceability/Scrum}
+\newpage
+
+% Traceability
+\subfile{4BacklogAndTraceability/Traceability}
+\newpage
+
+% User Story Cards
+\subfile{4BacklogAndTraceability/UserStories}
+\newpage
+
+\stopcontents
+\stoplist{lof}
+\stoplist{lot}

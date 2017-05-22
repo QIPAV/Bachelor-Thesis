@@ -1,0 +1,379 @@
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage[]{fullpage}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{listings} %% Used to highlight Code
+\usepackage{subfiles}
+\usepackage{tabu}
+\usepackage{import}
+\usepackage{graphicx}
+\usepackage{import}
+\usepackage{blindtext}
+\usepackage{lipsum}
+\usepackage{color, colortbl}
+\usepackage{xcolor}
+\usepackage{tikz} 
+\usepackage{eso-pic}
+\usepackage{tabularx}
+\usepackage{placeins}
+%\usepackage{fancyhdr} %% Used to manipulate headers 
+\usepackage{caption}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{afterpage}
+\usepackage[pages=some]{background}
+\usepackage{titletoc}
+\usepackage{appendix}
+\usepackage[explicit]{titlesec}  % Needed to manipulate titles
+\usepackage{hyperref}
+
+
+%% Define authors
+\author{Aleksander Holthe  \\ Katrine Sundal Haune \\ Kent Kjeldaas \\ Stian Fredriksen \\ Tomas Lyngroth \\ Vanja Katinka Halvorsen}
+
+\makeatletter
+\let\vapiqteam\@author
+\let\thedate\@date
+
+%% Vapiq Colors
+\definecolor{cadetgrey}{rgb}{0.57, 0.64, 0.69}      % Dark Color
+\definecolor{gainsboro}{rgb}{0.86, 0.86, 0.86}      % Light Color
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Removing "Chapter" from chapter name %% 
+\renewcommand{\chaptername}{}
+
+%%% Renaming Contents to Table of Contents %% 
+\renewcommand{\contentsname}{Table of Contents}
+
+%%% Renaming Bibliography to References %% 
+\renewcommand{\bibname}{References}
+
+%% Remove indentation
+\setlength{\parindent}{0pt}
+
+%% Resets Section and part
+\makeatletter
+    \@addtoreset{section}{part}
+\makeatother
+
+
+%% Forces the front pages to be on even page numbers. 
+\newcommand*\cleartoleftpage{%
+  \clearpage
+  \ifodd\value{page}\hbox{}\newpage\fi
+}
+
+%%%  Fjerner erroren som sier:  Something's wrong here
+%\renewcommand\addvspace[1]{}
+
+
+\usepackage{tocloft}
+\renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % for parts
+%\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % for chapters
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \let\Oldpart\part
+% \newcommand{\parttitle}{}
+% \renewcommand{part}[1]{\Oldpart{#1}\renewcommand{\parttitle}{#1}}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % %    Trying to manipulate headers and footers  %%%%%%%%%%%%%%%%%%%%%%%%%
+% \usepackage{fancyhdr} % Required for header and footer configuration
+
+% \pagestyle{fancy}
+% %\renewcommand{\chaptermark}[1]{\markboth{\sffamily\normalsize\bfseries\ \thechapter.\ #1}{}} % Chapter text font settings
+% \renewcommand{\chaptermark}[1]{\markboth{\sffamily\normalsize\bfseries\chaptername\ \thechapter.\ #1}{}} % Chapter text font settings
+% %\renewcommand{\sectionmark}[1]{\markright{\sffamily\normalsize\thesection\hspace{5pt}#1}{}} % Section text font settings
+% \fancyhf{} %\fancyhead[LE,RO]{\sffamily\normalsize\thepage} % Font setting for the page number in the header
+% \fancyhead[RO]{\leftmark} % Print the nearest section name on the left side of odd pages
+% %\fancyhead[LO]{\textbf{\thepart}} % Print the current chapter name on the right side of even pages
+% \fancyfoot[CO,CE]{\thepage}
+% %\renewcommand{\headrulewidth}{0.5pt} % Width of the rule under the header
+% %\addtolength{\headheight}{2.5pt} % Increase the spacing around the header slightly
+% \setlength{\headsep}{2} %%  Sets the space between header and text block 
+% \renewcommand{\footrulewidth}{0pt} % Removes the rule in the footer
+% \fancypagestyle{plain}{\fancyhead{}\renewcommand{\headrulewidth}{0pt}} % Style for when a plain pagestyle is specified
+
+% % % Removes the header from odd empty pages at the end of chapters
+% % \makeatletter
+% % \renewcommand{\cleardoublepage}{
+% % \ifodd\c@page\else
+% % %\hbox{}
+% % %\vspace*{-70pt}
+% % %\thispagestyle{fancy}
+% % %\newpage
+% % \fi}
+% % %
+% % %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%%     Titlepage     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\vapiqtitle}[1] {
+
+    \pagecolor{gainsboro}\afterpage{\nopagecolor}
+    \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=north east,inner sep=7pt] at (current page.north east)
+        {\includegraphics[scale=0.4]{VAPIQ-PICTURES/LogoMerged3}};        
+    \end{tikzpicture}
+	\vspace*{1.5cm}
+    \begin{figure}[h]
+        %\centering
+        \centering\includegraphics[width = 0.35\textwidth]{VAPIQ-PICTURES//Logo2_Tilted.png}
+	\vspace*{2.0cm}
+    \end{figure}     
+    \begin{center}
+    \textsc{\Huge #1}  
+    \end{center}
+    %\\[1 cm]
+    \textsc{\Large }   
+   % \\[3.0 cm]
+    \thispagestyle{empty}
+	\clearpage
+}	
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%    Hide part and Chapter heading adjustment  %%%%%%%%%%%%%%%%%%%%%
+\titleclass{\part}{straight}
+\newcommand*\Hide{%
+\titleformat{\part}
+  {}{}{0pt}{}
+}
+\makeatletter
+\renewcommand{\@makechapterhead}[1]{%
+\vspace*{0 pt}% %% Spacing over chapter heading! 
+{\setlength{\parindent}{0pt} \raggedright \normalfont
+\bfseries\huge
+\ifnum \value{secnumdepth}>1 
+    \if@mainmatter\thechapter.\ \fi%
+\fi
+#1\par\nobreak\vspace{20 pt}}}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% IKKE RØR DENNE MODULEN!!!!!!!!! %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\krav}[7]{
+\begin{table}[ht]
+\begin{tabularx}{\linewidth}{| p{2.35cm} p{2.35cm} p{2.35cm} p{2.35cm} p{2.35cm} p{2.2cm}|}   
+%\setlength\extrarowheight{2pt}
+        \hline
+        \rowcolor{cadetgrey}
+        \multicolumn{6}{|l|}{} \\
+        \rowcolor{cadetgrey} 
+        \centering \Large{BL ID:} & \centering\Large{Need ID:} & \centering\Large{Jira ID:} & \centering\Large{AC ID:} & \centering \Large{Test ID:} & \centering\Large{Sprint:} \\ 
+        &\cellcolor{gainsboro}&\cellcolor{gainsboro}&\cellcolor{gainsboro} &\cellcolor{gainsboro}  & \cellcolor{gainsboro}& \cellcolor{gainsboro}\\
+         \centering\cellcolor{gainsboro}\textbf{#1} & \centering\cellcolor{gainsboro}\textbf{#2} & \centering\cellcolor{gainsboro}\textbf{#3} & \centering\cellcolor{gainsboro}\textbf{#4} & \centering\cellcolor{gainsboro}\textbf{#5} & \centering\cellcolor{gainsboro}\textbf{#6}  \\
+         & \multicolumn{6}{|l|}{\textbf{}} \\
+         \multicolumn{6}{|l|}{\large\textbf{User Story}} \\ 
+        \multicolumn{6}{|l|}{#7}  \\ [10pt]  
+        \hline
+
+\end{tabularx}
+\end{table}
+\FloatBarrier}
+
+%%  \krav{BL ID}{NEED ID}{Jira ID}{AC ID}{TEST ID}{SPRINT}{User Story}
+%%  \krav{}{}{}{}{}{}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\testcard}[9]{
+\begin{table}[ht]
+\begin{tabularx}{\linewidth}{| p{0.26\textwidth} p{0.15\textwidth} p{0.15\textwidth} p{0.15\textwidth} p{0.16\textwidth} |}
+\hline 
+
+        \rowcolor{cadetgrey}
+        \multicolumn{5}{|l|}{} \\
+        \rowcolor{cadetgrey} 
+        \centering \Large{Test ID:} & \centering\Large{AC ID:} & \centering\Large{Sprint:} & \centering\Large{BL ID} & 
+        \centering\Large{Jira ID: } \\  
+        &\cellcolor{gainsboro}&\cellcolor{gainsboro}&\cellcolor{gainsboro} &\cellcolor{gainsboro} & \cellcolor{gainsboro} \\
+        \textbf{#1}\cellcolor{gainsboro}\centering  & \textbf{#2}\cellcolor{gainsboro}\centering & \textbf{#3}\cellcolor{gainsboro}\centering & \textbf{#4}\cellcolor{gainsboro}\centering & \textbf{#5}\cellcolor{gainsboro}\centering \\ &\hline 
+        \textbf{Acceptance Criteria:}\cellcolor{gainsboro} &  \multicolumn{4}{|l|}{}  \\   
+        \textbf{}\cellcolor{gainsboro} &  \multicolumn{4}{|l|}{#6}  \\ [10pt] \hline 
+        \textbf{Verification Procedure:}\cellcolor{gainsboro} & \multicolumn{4}{|l|}{} \\  
+        \textbf{}\cellcolor{gainsboro} & \multicolumn{4}{|l|}{#7} \\ [10pt] \hline
+        \textbf{Result(s)/Report(s):}\cellcolor{gainsboro} & \multicolumn{4}{|l|}{} \\
+        \textbf{}\cellcolor{gainsboro} & \multicolumn{4}{|l|}{#8} \\ [10pt] \hline
+        \textbf{Tester/Date:}\textbf{}\cellcolor{gainsboro} & \multicolumn{4}{|l|}{#9} \\ 
+        \hline
+\end{tabularx}
+\end{table}
+\FloatBarrier}
+%%   Template  
+% \testcard{Test ID}{AC ID}{Sprint}{BL ID}{Jira ID}{Acceptance Criteria}{Verification Method}{Results/Reports}{Performed by}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\tr}[6]{
+\begin{table}[ht]
+\begin{tabularx}{\linewidth}{| p{0.26\textwidth} p{0.15\textwidth} p{0.15\textwidth} p{0.15\textwidth} p{0.16\textwidth} |}
+    \hline 
+        \rowcolor{cadetgrey}
+        \multicolumn{5}{|l|}{} \\
+        \rowcolor{cadetgrey} 
+        \centering \Large{Test ID:} & \centering\Large{AC ID:} & \centering\Large{Sprint:} & \centering\Large{BL ID} & 
+        \centering\Large{Jira ID: } \\  
+        &\cellcolor{gainsboro}&\cellcolor{gainsboro}&\cellcolor{gainsboro} &\cellcolor{gainsboro} & \cellcolor{gainsboro} \\
+        \textbf{#1}\cellcolor{gainsboro}\centering  & \textbf{#2}\cellcolor{gainsboro}\centering & \textbf{#3}\cellcolor{gainsboro}\centering & \textbf{#4}\cellcolor{gainsboro}\centering & \textbf{#5}\cellcolor{gainsboro}\centering \\ &\hline 
+        \textbf{Acceptance Criteria:}\cellcolor{gainsboro} &  \multicolumn{4}{|l|}{}  \\  
+        \textbf{}\cellcolor{gainsboro} &  \multicolumn{4}{|l|}{#6}  \\ [10pt]  
+        \hline
+\end{tabularx}
+\end{table}
+\FloatBarrier}
+%%   Template  
+% \tr{Test ID}{AC ID}{Sprint}{BL ID}{Jira ID}{Acceptance Criteria}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                                                                   %%
+%\numberwithin{section}{part}                                                      %%       
+%\numberwithin{section}{chapter}                                                   %%    
+%%  Uncomment this if roman number is wanted before title                          %%
+%\numberwithin{chapter}{part}                                                      %%    
+                                                                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%  Beginning document:  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%% FRONT PAGE   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+    \centering
+    \pagecolor{gainsboro}
+    \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=north east,inner sep=7pt] at (current page.north east)
+        {\includegraphics[scale=0.4]{VAPIQ-PICTURES/LogoMerged3}};        
+    \end{tikzpicture}
+	\\[3.0 cm]
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width = 0.35\textwidth]{VAPIQ-PICTURES//Logo2_Tilted.png}
+        \\[2.0 cm] 
+    \end{figure}                              
+    \textsc{\Huge Bachelor Thesis 2017}  
+    \\[1 cm]
+    \textsc{\Large Spring 2017}   
+    \\[3.0 cm]
+	\large \vapiqteam      
+\end{titlepage}
+\pagecolor{white}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%       DOCUMENT HISTORY TABLE         %% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+\textbf{\large Document History}\\
+\vspace*{0.2cm}
+\begin{tabular}{cllll}
+\rowcolor{cadetgrey}
+\textbf{Version:}    &\textbf{Date:} 	 &\textbf{Comment:}    &\textbf{Done by:}   &\textbf{Approved by:}  \\
+0.8       & $16.05.17$       & Merged Technical Document  & SF    & SF  
+\end{tabular}                                                                   
+\end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace*{3.0 cm}
+
+%%%%%%%%%%%%%% ACRONYMS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+\textbf{\large Acronyms}\\
+\vspace*{0.2cm}
+\begin{tabular}{ll}
+\rowcolor{cadetgrey}
+    &   \\
+Aleksander Holthe      & AH     
+ \\\rowcolor{gainsboro}
+Katrine Sundal Haune  & KSH \\
+Kent Kjeldaas         & KK 
+ \\\rowcolor{gainsboro}
+Stian Fredriksen      & SF  \\
+Tomas Lyngroth       & TL   
+ \\\rowcolor{gainsboro}
+Vanja Katinka Halvorsen     & VKH   \\
+Variable Pitch Quadcopter   & VAPIQ
+\end{tabular}                                                             
+\end{center}
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%     CONTENTS      %%%%%%%%%%%%%%%%%%%%
+
+%% Document Overview  %%
+\include{DocumentOverview}
+\newpage
+
+%% Abstract goes here: %%
+\include{Abstract}
+\newpage
+
+%% Acknowledgements %%
+\include{Acknowledgements}
+\newpage
+
+%% Summary %%
+\include{Summary}
+\newpage
+
+%%%%%%% LIST OF STUFF  %%%%% %%%
+\makeatletter
+\@addtoreset{chapter}{part}
+\@addtoreset{section}{chapter}
+\setcounter{tocdepth}{-1}
+\tableofcontents
+\setcounter{tocdepth}{2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%% Chapters 
+%\include{TheProject}
+
+%\include{1OrganizationalDocument/OrganizationalMain}
+\include{3TechnicalDocument/TechnicalMain}
+%\include{2VPQ/VPQMain}
+%\include{4BacklogAndTraceability/BacklogMain}
+\include{5Test/TestMain}
+%\include{6SprintLog/SprintLogMain}
+\include{7PostProject/PostProjectMain}
+
+
+%% Appendices
+\include{Appendices/AppendixMain}
+
+%% References
+\include{ReferencesMain}
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

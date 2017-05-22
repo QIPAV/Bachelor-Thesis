@@ -1,0 +1,121 @@
+\cleartoleftpage
+{
+\Hide
+\part{Test Specification}
+}
+\vapiqtitle{Test Specification}
+%% DOCUMENT HISTORY TABLE
+%%% This table should be updated with all major changes
+%%%% OBS! When syncing with Github, remember to leave comment corresponding with version number from this table
+\begin{center}
+\textbf{\large Document History}
+\begin{tabular}{cllll}
+\rowcolor{cadetgrey}
+\textbf{Version:}    &\textbf{Date:} 	 &\textbf{Comment:}    &\textbf{Done by:}   &\textbf{Approved by:}  \\
+2.0    & $27.03.17$    & Official Version & VKH & VKH \\
+2.1    & $04.04.17$    & Update test cases & VKH & VKH \\
+2.2    & $10.04.17$    & Document refined & VKH & VKH \\
+2.3    & $24.04.17$    & Updated test cases and intro & VKH & VKH \\
+2.4    & $29.04.17$    & Research Testing chapter added & VKH & VKH\\
+2.5    & $01.05.17$    & Research Testing text & VKH & VKH \\
+2.6    & $10.05.17$    & Research test plan & VKH & VKH \\
+2.7    & $11.05.17$    & Research test plan & VKH & VKH \\
+2.8    & $14.05.17$    & Research Testing - results & VKH & VKH \\
+2.9    & $15.05.17$    & Research Testing - results & VKH & VKH \\
+2.10    & $16.05.17$   & Refinement & VKH & VKH \\
+2.11    & $17.05.17$   & Research Testing & VKH & VKH \\
+2.12    & $20.05.17$   & Research Testing & VKH & VKH \\
+2.13    & $21.05.17$   & Research Testing & VKH & VKH \\
+2.14    & $22.05.17$   & Research Testing & VKH & VKH \\
+\end{tabular}                                                                   
+\end{center}
+\vspace*{1 cm}
+
+
+%% Abbreviations
+\begin{center}
+\textbf{\large Abbreviations}\\
+\vspace*{0.2cm}
+\begin{tabular}{ll}
+\rowcolor{cadetgrey}
+    &   \\
+Variable Pitch Quadcopter & VAPIQ\\\rowcolor{gainsboro}
+Variable Pitch Mechanism & VPM \\
+Graphical User Interface & GUI \\ \rowcolor{gainsboro}
+Test Case & TC \\
+Test Report &TR \\ \rowcolor{gainsboro}
+\end{tabular}                                                             
+\end{center}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% LIST OF STUFF
+\setcounter{section}{0}
+\setcounter{secnumdepth}{2}
+
+\startcontents  
+\setcounter{tocdepth}{2}
+\chapter*{\contentsname}
+\printcontents{}{0}{}
+
+\vspace*{1cm}
+
+\startlist{lof}
+\printlist{lof}{}{{\large\textbf{List of Figures}}}
+\vspace*{1cm}
+\startlist{lot}
+\printlist{lot}{}{{\large\textbf{List of Tables}}}
+\newpage
+
+%\setcounter{section}{26}
+
+%Introduction
+\subfile{5Test/1Introduction}
+
+%Test Plan
+\subfile{5Test/21TestStrat}
+\newpage
+
+\subfile{5Test/22TestMeth}
+\newpage
+
+\subfile{5Test/23TestEndProduct}
+\newpage
+
+%Test Cases
+\subfile{5Test/Test_Cards_S1}
+\newpage
+
+\subfile{5Test/Test_Cards_S2}
+\newpage
+
+\subfile{5Test/Test_Cards_S3}
+\newpage
+
+\subfile{5Test/Test_Cards_S4}
+\newpage
+
+\subfile{5Test/Test_Cards_S5}
+\newpage
+
+\subfile{5Test/Test_Cards_SX}
+\newpage
+
+%Test Reports
+\subfile{5Test/Test_Report}
+\newpage
+
+%Research
+\subfile{5Test/UResearch_Test}
+\newpage
+
+
+%%References
+%\subfile{5Test/XReferences}
+
+
+\stopcontents
+\stoplist{lof}
+\stoplist{lot}

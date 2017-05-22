@@ -1,0 +1,515 @@
+\chapter{Test Reports for User Stories}
+\section{TR001: One Motor Test Rig}
+\tr{T008}{AC008}{2}{BL012}{VPQ-21}
+         {\shortstack[l]{GIVEN that we have a one motor test rig AND a microcontroller with a \\ working stabilizing code, WHEN we look at the test rig, THEN the \\motor  shall stay in the specified angle AND if we manually change angle; \\ the  motor shall adjust thrust accordingly.}}
+
+\subsection*{\textsc{\medium Purpose}}
+The purpose of TR001 is to gain information of how a single motor with a fixed pitch propeller can be stabilized in one axis. To conduct this test, and fulfil AC008, a motor is mounted on an arm that can alter position in one axis. 
+
+\subsection*{\textsc{\medium Test Setup}}
+In Tab. \ref{tab:tabt1} the equipment used conducting TR001 is displayed. 
+\begin {table}[H]
+    \begin{center}
+    \caption {Test Equipment: One Motor Test Rig} 
+    \label{tab:tabt1} 
+    \begin{tabular}{|l|l|l|}\hline 
+        Brushless motor    & DJI E800   &\\ \hline
+        ESC         & DJI E620S     &\\ \hline
+        Power Supply & EA-PS 2342-06 B  & 20 V   \\ \hline
+        Microcontoller & Arduino Nano ATmega328P &\\ \hline
+        IMU & MPU5060 & \\ \hline
+    \end{tabular}
+    \end{center}
+\end{table}
+
+
+In Fig. \ref{fig:onemotor} an illustration of the test setup for the One Motor Test Rig is displayed. The DJI E800 motor is mounted on an arm that can alter position in one axis. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.8\textwidth]{VAPIQ-PICTURES/TestSetup1}
+    \caption{Test Setup: One Motor Test Rig}
+    \label{fig:onemotor}
+\end{figure}
+
+On the arm the MPU5060 is mounted, and this sensor transmits position data to the Arduino Nano. The Arduino Nano will then transmit a PWM signal to the ESC that equals desired thrust to the motor based on the measured sensor value. The amount of thrust is determined by the current position relative to desired position. 
+\\\\
+In Appendix A1 the code used for the One Motor Test Rig is displayed. For this test we used the $PID\_v1.h$ library to control and stabilize the arm. Before conducting this test we determined the most appropriate PID parameters by trial and error. These parameters are displayed in Tab. \ref{tab:tabt2}.
+\begin {table}[H]
+    \begin{center}
+    \caption {PID Parameters: One Motor Test Rig} 
+    \label{tab:tabt2} 
+    \begin{tabular}{|l|l|}\hline 
+        Kp         & 5  \\ \hline
+        Ki         & 2   \\ \hline
+        Kd         & 1  \\ \hline
+    \end{tabular}
+    \end{center}
+\end{table}
+
+In code the desired angle (Setpoint = desired angle;) was set before transferring code to the microcontroller. When a desired angle was given and the code was compiled and transferred; the motor provided the appropriate thrust and the the motor arm moved to the wanted position. 
+\\\\
+When the arm was manually moved in a positive or negative direction relative to the desired angle; the motor produced less or more thrust to compensate for the change in position. 
+
+\subsection*{\textsc{\medium Test Assessment}}
+% [Enter a comprehensive assessment of your interpretation of how adequate the test was in light of how thorough the test plan said it should be? What wasn't tested well enough?]
+%[Describe any variances between the testing that was planned and the testing that actually occurred.  Also, provide an assessment of the manner in which the test environment may be different from the operational environment and the effect of this difference on the test results
+%[Provide a brief description of the unexpected results, problems, or defects that occurred during the testing.]
+When using libraries it is difficult to have an overview of how the code functions, unless the libraries are self composed. This may be a source of error.
+\\\\
+In this test, there were some measurement inaccuracy concerning the actual angle of the test arm and the angle input. This is due to the fact that there was no device measuring the actual angle of the arm. Also sensor instability was a reoccurring problem during the tests. Calibration and filtering of noise had to be implemented in order to achieve more stable results.
+\\\\
+
+\subsection*{\textsc{\medium Test Results}}
+In this test the arm stayed in approximately the desired angle. In Tab. \ref{tab:tabt3} the results of the One Motor Test Rig is displayed. 
+\begin {table}[H]
+    \begin{center}
+    \caption {Test Results: One Motor Test Rig} 
+    \label{tab:tabt3} 
+    \begin{tabular}{|l|l|l|}\hline 
+        Test No.:  & Desired Angle:   & Comment:\\ \hline
+        1         & 45    &  Arm stabilizes   \\ \hline
+        2         & 30    &  Arm stabilizes    \\ \hline
+        3         & 10    &  Arm stabilizes    \\ \hline
+    \end{tabular}
+    \end{center}
+\end{table}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{TR002: Arduino Nano Computation Time}
+\tr{T010}{AC013}{3}{BL033}{VPQ-106 VPQ-107}
+         {\shortstack[l]{GIVEN that we have an Arduino Nano, WHEN we run a script, THEN \\the microcontroller shall complete all computations within 20 ms.}}
+                         
+\subsection*{\textsc{\medium Purpose}}
+The purpose of TR002 is to determine if the Arduino Nano can be used as an on-board chip for the quadcopter. 
+
+\subsubsection*{\textsc{\medium Test Setup}}
+In Tab. \ref{tab:tabt4} the equipment used conducting TR002 is displayed. 
+\begin {table}[H]
+    \begin{center}
+    \caption {Test Equipment: Arduino Nano Computation Time} 
+    \label{tab:tabt4} 
+    \begin{tabular}{|l|l|}\hline 
+        Power Supply & EA-PS 2342-06 B     \\ \hline
+        Microcontoller & Arduino Nano ATmega328P \\ \hline
+        IMU & MPU5060 \\ \hline
+        LED & \\ \hline
+        Oscilloscope & \\ \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+A flight controller normally has two loops; one for attitude control and one for rate control. Both these loops needs to be completed within 20ms. Having an unequipped on-board chip can put restrictions on the stabilization of the quadcopter. The test is conducted by running a loop and at the beginning of the loop a LED is set high, and at the end of the loop, low. To measure the computation time; an oscilloscope measuring probe was connected to the LED. 
+
+\subsection*{\textsc{\medium Test Assessment}}
+At this point in the project the size of the code is assumed to be smaller than it will be in the future. 
+
+\subsection*{\textsc{\medium Test Results}}
+In Tab. \ref{tab:tabt5} the time needed for the Arduino Nano to carry out its computations are displayed.  
+\begin {table}[H]
+    \begin{center}
+    \caption {Test Results: Arduino Nano Computation Time} 
+    \label{tab:tabt5} 
+    \begin{tabular}{|c|c|}\hline 
+        Test No.: &  Result [ms]:\\ \hline
+        1. & 1.66 \\ \hline
+        2. & 1.81 \\ \hline
+        3. & 1.79 \\ \hline
+    \end{tabular}
+    \end{center}
+\end{table}
+
+The Arduino Nano Computation time turned out to be around the expected value. The worst case computation time was $1.81ms$ as shown in \ref{tab:tabt5}. 
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{TR003: 1-Axis Stabilization FPQ}
+\tr{T011}{AC014}{3, 4}{BL033, BL032}{VPQ-106, VPQ-107}
+         {\shortstack[l]{GIVEN that we have a one axis test rig AND a microcontroller with a \\working
+                         stabilization code, WHEN we look at the test rig AND the code\\ is running,
+                         THEN the one axis test rig shall stay in the specified angle \\AND if the 
+                         angle is manually changed; the motors shall adjust thrust\\ accordingly.}}
+                         
+
+\subsection*{\textsc{\medium Purpose}}
+The purpose of TR003 is to gain information of how to obtain stability, how to tune a controller and test sensors and their output. To do this, two motors with fixed pitch propellers are tested in 1-axis. To conduct this test, and fulfil AC014, one motor is mounted on each side of the testing rig which pivots around its center allowing movement in 1-axis. 
+
+\subsection*{\textsc{\medium Test Setup}}
+In Fig. \ref{fig:testsetup3} an illustration of the test setup for the 1-axis test rig is displayed. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.5\textwidth]{VAPIQ-PICTURES/TestSetup3}
+    \caption{Test Setup: 1-Axis Test Rig}
+    \label{fig:testsetup3}
+\end{figure}
+
+This test has been conducted in many iterations. It has been done with multiple sensors and multiple versions of code. On the test rig an IMU is mounted, and this sensor transmits position data to the Arduino Nano. The Arduino Nano will then transmit a PWM signal to the ESC that equals desired thrust to the motors based on the measured sensor values. The amount of thrust is determined by the current position relative to desired position. To stabilize the test rig a self-developed P-control has been implemented. \\
+\\
+In Appendix A2 the current code for TR003 can be found.\\
+\\
+All testing performed on the 1-axis test rig has been done to understand and document how the stabilization algorithms and sensors are performing. The 1-axis rig has been used continuously for testing stability, sensors and code for fixed pitch. 
+
+\subsection*{\textsc{\medium Test Assessment}}
+% [Enter a comprehensive assessment of your interpretation of how adequate the test was in light of how thorough the test plan said it should be? What wasn't tested well enough?]
+%[Describe any variances between the testing that was planned and the testing that actually occurred.  Also, provide an assessment of the manner in which the test environment may be different from the operational environment and the effect of this difference on the test results
+%[Provide a brief description of the unexpected results, problems, or defects that occurred during the testing.]
+During testing there has been problems with sensor instability when propellers have been mounted. This was a reoccurring problem with all sensors. Calibration and filtering of noise had to be done in order to achieve more stable results.
+
+\subsection*{\textsc{\medium Test Results}}
+The results obtained when conducting tests on this test rig has been valuable. The test rig has given information about how to make a flight controller, stabilization algorithms and implementation of sensors.\\
+\\
+See code in Appendix A2.
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{TR004: FPQ Hover Stabilization}
+\tr{T012}{AC015}{4}{BL035 BL036}{VPQ-178 VPQ-184}
+         {\shortstack[l]{GIVEN that we have assembled a FPQ, WHEN it is secured on a\\ test table AND we let the FPQ hover, THEN it shall stabilize itself.}}
+\subsection*{\textsc{\medium Purpose}}
+%hvorfor gjør vi dette?
+The purpose of TR004 is to see how stable the quadcopter is in hover.
+
+\subsection*{\textsc{\medium Test Setup}}
+% hvordan gjør vi dette?
+Fig. \ref{fig:ft1} and \ref{fig:ft2} shows how the quadcopter was secured on the test table.
+
+\begin{figure}[h]
+        \centering
+         \begin{minipage}[b]{0.495\textwidth}
+            \includegraphics[width = 1\textwidth]{VAPIQ-PICTURES/flighttest2}
+            \caption{Test Setup: Quadcopter Tied to Test Table}
+            \label{fig:ft1}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[b]{0.45\textwidth}
+            \includegraphics[width = 1\textwidth]{VAPIQ-PICTURES/flighttest}
+            \caption{Quadcopter in Flight}
+            \label{fig:ft2}
+        \end{minipage}
+\end{figure}
+
+In this test the stability of the quadcopter at hover is tested. The quadcopter was secured to a table by threads on each leg, ensuring that it could not uncontrollably fly away. In Appendix A4 the code used for TR004 can be found. 
+
+\subsection*{\textsc{\medium Test Assessment}}
+% egenvurdering av testen
+% [Enter a comprehensive assessment of your interpretation of how adequate the test was in light of how thorough the test plan said it should be? What wasn't tested well enough?]
+
+%[Describe any variances between the testing that was planned and the testing that actually occurred.  Also, provide an assessment of the manner in which the test environment may be different from the operational environment and the effect of this difference on the test results
+%[Provide a brief description of the unexpected results, problems, or defects that occurred during the testing.]
+The quadcopter was very unstable. The reason might be noise on sensor and/or logic faults in the code. Another factor may be when the quadcopter hits the end of the line a reaction force is experienced by the quadcopter, telling the sensors that a dramatic change in position has occurred, hence making the quadcopter overcompensate and react unstably. 
+\\\\
+At this point it can be concluded that a combination of these factors are the reason for unstable flight.
+
+\subsection*{\textsc{\medium Test Results}}
+%hva fikk vi ut av dette
+The quadcopter hovers, but did not stabilize. See video included on USB.
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{TR005: Motor Propeller Thrust Test Rig}
+\tr{T013}{AC016}{4}{BL037}{VPQ-184}
+         {\shortstack[l]{GIVEN that we have a test rig for testing motor and propeller\\ combinations AND a code where we can manually alter thrust, WHEN \\we alter thrust, THEN the weight will display thrust in grams.}}
+
+\subsection*{\textsc{\medium Purpose}}
+The purpose of TR005 is to evaluate the performance of the different motor and propeller combinations for fixed pitch. 
+
+\subsection*{\textsc{\medium Test Setup}}
+In Tab. \ref{tab:tabt6} and \ref{tab:tabt7} the equipment used conducting TR005 is displayed.
+\begin {table}[H]
+    \begin{center}
+    \caption {Test Equipment: Motor Propeller Thrust Test Rig} 
+    \label{tab:tabt6} 
+    \begin{tabular}{|l|}\hline 
+        Power SupplyEA-PS 2342-06 B           \\ \hline
+        Microcontoller Arduino Nano ATmega328P \\ \hline
+        Motor \\ \hline
+        ESC\\ \hline    
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\begin {table}[H]
+    \begin{center}
+    \caption {Motor Propeller Combination: Motor Propeller Thrust Test Rig} 
+    \label{tab:tabt7} 
+    \begin{tabular}{|l|l|}\hline 
+        Motor Test No. 1: & Motor Test No. 2:    \\ \hline
+        DJI E600 & 3DR AC2836-358   \\ \hline
+        12" propeller & 11" propeller \\ \hline
+        ESC E600 & 3DR 20A-BEC\\ \hline
+        415KV & 880KV\\ \hline
+        \end{tabular}
+    \end{center}
+\end{table}\newpage
+\newpage
+
+In Fig. \ref{fig:TestSetup5} an illustration of the test setup for the test rig is displayed.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.6\textwidth]{VAPIQ-PICTURES/ThrustTestRig}
+    \caption{Test Setup: Motor Propeller Thrust Test Rig}
+    \label{fig:TestSetup5}
+\end{figure}
+In this test a potentiometer was used to adjust thrust. The potentiometer values are mapped to values between 1000 and 2000 microseconds. Both motors were tested for several PWM values and the respective thrust values were noted.\\
+\\
+In Appendix A9 the code used for TR005 can be found. 
+
+\subsection*{\textsc{\medium Test Assessment}}
+% [Enter a comprehensive assessment of your interpretation of how adequate the test was in light of how thorough the test plan said it should be? What wasn't tested well enough?]
+The test rig gives a good indication of the actual thrust produced by the motor propeller combinations. The rig may have some measuring inaccuracies due to the small variations in mechanical mounting, the difference in width of the mounting plate in comparison to the real quadcopter arm, and the calibration of the weight.
+
+\subsection*{\textsc{\medium Test Results}}
+For our purposes, these tests have yielded the results needed in order to evaluate the performance of the motors and propellers.\\
+\\
+In Fig. \ref{fig:fpq3} and \ref{fig:fpq1} the result from this test is displayed. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.6\textwidth]{VAPIQ-PICTURES/FPQ3}
+    \caption{DJI E600with PS 25.2V: Motor Propeller Thrust Test Rig}
+    \label{fig:fpq3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.6\textwidth]{VAPIQ-PICTURES/FPQ1}
+    \caption{3DR Motor(AC2836-358) with PS 12V: Motor Propeller Thrust Test Rig}
+    \label{fig:fpq1}
+\end{figure}
+
+Full test result matrix for TR005 can be found in Appendix B1.
+ 
+ 
+\newpage       
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{TR007: Variable Pitch Test - g/W and Servo Angle Input}
+\tr{T015}{AC018}{5}{BL048}{VPQ-126}
+         {\shortstack[l]{GIVEN that we have mounted a variable pitch mechanism to the thrust \\ test rig, WHEN we adjust the pitch and/or thrust, THEN the respective\\ thrust in grams shall be displayed on weight.}}
+
+
+\subsection*{\textsc{\medium Purpose}}
+The purpose of TR007 is to evaluate the efficiency of the variable pitch assembly as well as to provide information about the most efficient pitch angle. 
+
+\subsection*{\textsc{\medium Test Setup}}
+In Tab. \ref{tab:tabt8} and \ref{tab:tabt9} the equipment used conducting TR007 is displayed. 
+\begin {table}[H]
+    \begin{center}
+    \caption {Test Equipment: Variable Pitch Test } 
+    \label{tab:tabt8} 
+    \begin{tabular}{|l|}\hline 
+        Power SupplyEA-PS 2342-06 B           \\ \hline
+        Microcontoller Arduino Nano ATmega328P \\ \hline
+        Motor \\ \hline
+        ESC\\ \hline    
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\begin {table}[H]
+    \begin{center}
+    \caption {Motor Propeller Combination: Variable Pitch Test} 
+    \label{tab:tabt9} 
+    \begin{tabular}{|l|l|}\hline 
+        Motor Test No. 1: & Motor Test No. 2:  \\ \hline
+        3DR AC2836-358  & AXI 2208/26 \\ \hline
+        Align mechanism with 9" propeller & Model Motors mechanism with 8" propeller \\ \hline
+        3DR 20A-BEC & Multistar 12A - Turnigy \\ \hline
+        880KV & 1420KV \\ \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+\newpage
+\noindent In Fig. \ref{fig:VPM} the test setup for TR007 is displayed.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.6\textwidth]{VAPIQ-PICTURES/TestSetupGramsPerW}
+    \caption{Test Setup: Variable Pitch Test}
+    \label{fig:VPM}
+\end{figure}
+\noindent
+In this test a servo was mounted to the Thrust Test Rig as shown in Fig. \ref{fig:VPM}. The servo adjusts the pitch angle on the variable pitch mechanism. In this test two potentiometers are used; one to adjust thrust and another to adjust the pitch angle. The potentiometer values are mapped to thrust values between 1000 and 2000 microseconds. The potentiometer used for the pitch angle adjustment is mapped to have a value between 0 and 180 degrees.\\
+\\
+In Appendix A9 the code used for TR007 can be found. 
+
+
+\subsection*{\textsc{\medium Test Assessment}}
+% [Enter a comprehensive assessment of your interpretation of how adequate the test was in light of how thorough the test plan said it should be? What wasn't tested well enough?]
+%[Describe any variances between the testing that was planned and the testing that actually occurred.  Also, provide an assessment of the manner in which the test environment may be different from the operational environment and the effect of this difference on the test results
+%[Provide a brief description of the unexpected results, problems, or defects that occurred during the testing.]
+The test rig gives a good indication of the actual thrust produced by the motor propeller combinations. The rig may have some measuring inaccuracies due to the small variations in mechanical mounting, the difference in width of the mounting plate in comparison with a real quadcopter arm and the calibration of the weight.\\
+\\
+The servo value input for both the tests are not the same. The reason is that the test with the 3DR motor and Align mechanism needed a stronger servo motor. The servos were not mounted and configured in the same way.\\
+\\
+When a stronger servo was mounted to the 3DR motor and Align mechanism; it was still not strong enough to hold the pitch mechanism in place. This was probably due to poor mechanical power transfer.\\
+\\
+The test has only been performed for one specific thrust value and then running through the different settings of pitch. To get the whole picture of the relationship between thrust, pitch angle and efficiency the test must be performed for all possible combinations. 
+%further work
+
+\newpage
+\subsection*{\textsc{\medium Test Results}}
+In Fig. \ref{fig:vpm1} and \ref{fig:vpm2} the result from this test is displayed. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.62\textwidth]{VAPIQ-PICTURES/3DRxx}
+    \caption{3DR Motor Efficiency: Variable Pitch Test}
+    \label{fig:vpm1}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.62\textwidth]{VAPIQ-PICTURES/Axi2}
+    \caption{AXI Motor Efficiency: Variable Pitch Test}
+    \label{fig:vpm2}
+\end{figure}
+
+In Fig. \ref{fig:vpm1} it can be seen that the maximum efficiency for the 3DR motor and Align mechanism at the specified thrust, is when the servo angle value is at 89. This servo angle value is approximated to be about 7 degrees on the propeller blade. \\
+\\
+In Fig. \ref{fig:vpm2} it can be seen that the maximum efficiency for the AXI motor and Modol Moter mechanism at the specified thrust, is when the servo angle value is around 74. This servo angle value is approximated to be around 6 degrees on the propeller blade.\\
+\\
+Full test result matrix for TR007 can be found in Appendix B2.
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{TR008: Variable Pitch RC Flight Controller Loop time}
+\tr{T016}{AC019}{7}{BL049}{VPQ-295}
+         {\shortstack[l]{GIVEN that we have a complete Flight Controller with RC implemented\\ on an Arduino Nano, WHEN code is running, THEN one loop cycle shall \\ be completed within 4 ms.\\ }}
+
+\subsection*{\textsc{\medium Purpose}}
+The purpose of TR008 is to determine if the Arduino Nano can complete all computations needed to complete one loop cycle in 4 ms.
+
+\subsection*{\textsc{\medium Test Setup}}
+In Tab. \ref{tab:tabt10} the equipment used conducting TR008 is displayed. 
+\begin {table}[H]
+    \begin{center}
+    \caption {Test Equipment: Arduino Nano Loop Cycle} 
+    \label{tab:tabt10} 
+    \begin{tabular}{|l|l|}\hline 
+        Variable Pitch Quadcopter     \\ \hline
+        LED  \\ \hline
+        Oscilloscope  \\ \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+The test is conducted by running the flight controller code. At the start of the loop a LED is set high and at the end of the loop, low. To measure the computational time; an oscilloscope measuring probe was connected to the LED to detect rising and falling edge.\\
+\\
+In Appendix AX the code used for TR008 can be found. \\
+\\
+% The Variable Pitch Quadcopter has all components mounted as the circuit diagram shown in Fig. \ref{fig:vpm1}. \\
+% \\
+% **INSERT CIRCUIT DIAGRAM**
+
+\subsection*{\textsc{\medium Test Assessment}}
+% [Enter a comprehensive assessment of your interpretation of how adequate the test was in light of how thorough the test plan said it should be? What wasn't tested well enough?]
+%[Describe any variances between the testing that was planned and the testing that actually occurred.  Also, provide an assessment of the manner in which the test environment may be different from the operational environment and the effect of this difference on the test results
+%[Provide a brief description of the unexpected results, problems, or defects that occurred during the testing.]
+The control loop is set to run at 250 Hz. The code for the Variable Pitch Quadcopter is set to always use 4 ms to complete. If the loop cycle is less than 4 ms it will wait.
+
+\subsection*{\textsc{\medium Test Results}}
+In Fig. \ref{fig:4ms1} and \ref{fig:4ms2} it can be seen that the loop needs 4.02 ms to be completed. From the measurements done with the oscilloscope, it is observed that the loop time has fluctuations of \pm0.03ms.
+
+\begin{figure}[H]
+        \centering
+         \begin{minipage}[b]{0.45\textwidth}
+            \includegraphics[width = 1\textwidth]{VAPIQ-PICTURES/4ms1}
+              \caption{Oscilloscope 1.0 ms/square}
+            \label{fig:4ms1}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[b]{0.45\textwidth}
+            \includegraphics[width = \textwidth]{VAPIQ-PICTURES/4ms2}
+            \caption{Oscilloscope 0.5 ms/square}
+            \label{fig:4ms2}
+        \end{minipage}
+\end{figure}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{TR009: Qualisys Safety Boundary}
+\tr{T009}{AC020}{7}{BL020}{VPQ-064}
+         {\shortstack[l]{GIVEN that we have defined a boundary area in Qualisys, WHEN the \\ quadcopter crosses boundary line, THEN data transmission shall initiate \\ shut-down. }}
+
+\subsection*{\textsc{\medium Purpose}}
+The purpose of TR009, is to verify that the safety feature turns off the quadcopter at the specified boundary.
+
+\subsection*{\textsc{\medium Test Setup}}
+This test is conducted at KONGSBERG Innovation Center using the Qualisys Motion Tracking System. For more information about the MOCAP-system see XX. For this test the Variable Pitch Quadcopter is manually manoeuvred in the defined test area. When quadcopter is moved outside the boundary; the quadcopter shall initiate shut-down.\\
+\\
+In Appendix AX the code used for TR009 can be found. 
+% \\
+% For the second test the quadcopter is active and it will receive position data from Qualisys. When the VPQ receives the position data it shall move to the desired position. In this test this will be a movement i z-axis. The VPQ will start on plane surface and move 1.5 meters upwards (with a rate of SOMETHING m/s). When position is reached the VPQ shall stay in desired position for 10 seconds before landing process is initiated. 
+
+\subsection*{\textsc{\medium Test Assessment}}
+% [Enter a comprehensive assessment of your interpretation of how adequate the test was in light of how thorough the test plan said it should be? What wasn't tested well enough?]
+%[Describe any variances between the testing that was planned and the testing that actually occurred.  Also, provide an assessment of the manner in which the test environment may be different from the operational environment and the effect of this difference on the test results
+%[Provide a brief description of the unexpected results, problems, or defects that occurred during the testing.]
+The safety net installed at KONGSBERG Innovation Center may present some interference for the position of the VPQ. The net have to be properly distributed around the room to decrease the level of interference.
+
+\subsection*{\textsc{\medium Test Results}}
+The test has been performed and evidence suggests that the shut-down feature will work as intended.
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{TR010: Simulated Variable Pitch Thrust Response}
+\tr{T010}{AC021}{8}{BL022, BL050}{VPQ-385}
+         {\shortstack[l]{GIVEN that we have a linearized motor propeller model AND the \\ system is implemented in Simulink, WHEN the simulation is ran, \\THEN the  systems thrust response shall be plotted in a graph.}}
+
+\subsection*{\textsc{\medium Purpose}}
+The purpose of TR010 is to get an indication of the response time of pitch actuation versus increasing the motors rotational velocity.
+
+% is to gain information regarding the response time when pitch is adjusted to achieve desired thrust versus increasing the thrust by increasing the voltage.
+
+\subsection*{\textsc{\medium Test Setup}}
+This test is performed by implementing a matlab script with the derived and estimated values for the motor-propeller system. The matlab script is used along with a simulink block diagram. The structure of the block diagram i displayed in Fig. \ref{fig:blabla}. See XX for the full deduction of the motor-propeller model.\\
+\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.5\textwidth]{VAPIQ-PICTURES/blabla.png}
+    \caption{Simulink Block Diagram}
+    \label{fig:blabla}
+\end{figure}
+
+For this experiment it is assumed a fixed rpm $(\omega_0)$ along with a fixed starting pitch  $(\alpha_0)$. 
+$$\omega_0 = 730 rad/s$$
+$$\alpha_0 = 2.5 angle$$
+Then desired steps are applied to $\Delta v$ and $\Delta \alpha$.\\
+\\
+In Appendix AX the matlab script used for TR010 can be found. In Appendix BX the simulink block diagram is displayed.\\
+\\
+
+\subsection*{\textsc{\medium Test Assessment}}
+% [Enter a comprehensive assessment of your interpretation of how adequate the test was in light of how thorough the test plan said it should be? What wasn't tested well enough?]
+%[Describe any variances between the testing that was planned and the testing that actually occurred.  Also, provide an assessment of the manner in which the test environment may be different from the operational environment and the effect of this difference on the test results
+%[Provide a brief description of the unexpected results, problems, or defects that occurred during the testing.]
+The motor propeller model used for this experiment is a simplified adaptation of the real physical model of the variable pitch motor and propeller. From this simplification the response might differ from reality, but can give an indication. 
+
+\subsection*{\textsc{\medium Test Results}}
+From Fig. \ref{fig:bla} the step response for a step in pitch versus a step in voltage can be seen. From Fig. \ref{fig:bla} it is observed that it takes a shorter amount of time to produce the desired thrust when pitch is actuated versus the time it takes to change the motors voltage.\\
+\\
+From Fig. \ref{fig:blablabla} the respective rotational velocities based on a step in $\Delta v$ and $\Delta \alpha$ are displayed. 
+
+\begin{figure}[H]
+        \centering
+         \begin{minipage}[b]{0.49\textwidth}
+            \includegraphics[width = 1\textwidth]{VAPIQ-PICTURES/thrustoutput.png}
+              \caption{Test}
+            \label{fig:bla}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[b]{0.49\textwidth}
+            \includegraphics[width = \textwidth]{VAPIQ-PICTURES/motrotspeed.png}
+            \caption{Test}
+            \label{fig:blablabla}
+        \end{minipage}
+\end{figure}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

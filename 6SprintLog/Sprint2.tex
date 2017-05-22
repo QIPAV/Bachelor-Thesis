@@ -1,0 +1,62 @@
+\chapter{Sprint 2 - Summary}
+
+At the end of sprint 1, the group had decided on a concept for the flight controller. Our plan was to use the motion capture system Qualisys at KIC as the only source of sensing and do all computations externally. The concept was; no on-board computation, only a receiver on the quadcopter and a unit to send PWM-signals to the motors. In this way, we could eliminate the need for a on-board chip. 
+\\\\
+Week one of sprint 2, was the first week of technical work. The first task was to investigate Qualisys and if it was possible to use standalone. To investigate if it was possible, the group transferred data between Qualisys and an Arduino using Bluetooth. The time between data transfers was measured to be 0,08 seconds (12,5 Hz). In order to achieve stable control a minimum of 50 Hz is needed.
+\\\\
+Additionally, the group built a one-axis test rig (Fig. \ref{fig:firsttestrig}) to see if it was possible to hold a motor-propeller assembly stable on closed-loop control from Qualisys.
+
+\begin{figure}[h]
+        \centering
+        \includegraphics[width = 0.4
+        \textwidth]{VAPIQ-PICTURES//TestRig(arm)1}
+         \caption{First Test Rig}
+         \label{fig:firsttestrig}
+    \end{figure}   
+\noindent
+The team quickly realized that there was to much latency in Qualisys and concluded that it would be impossible to achieve stable flight with the motion capture system standalone, without on-board computation.
+\\
+Construction of the fixed pitch quadcopter was postponed to sprint 3. The original plan was to use motors which could handle both variable and fixed pitch. If the motors and quadcopters are as equal as possible, this will give the best foundation for comparison. Since the motors and mechanisms the group ordered did not work, a new plan and orders had to be placed. 
+\\\\
+In the meantime, a simple laser-cut fixed pitch quadcopter was assembled with 3DR 880KV AC2836-358 motors borrowed from HSN. This was done in order to test our control algorithm (Fig. \ref{fig:firstfpq}). This was a rapid prototype and only meant for the test bench. In this sprint the preliminary web-page was also published.
+
+\begin{figure}[h]
+        \centering
+        \includegraphics[width = 0.3\textwidth]{VAPIQ-PICTURES//FirstFPQ}
+         \caption{First Fixed Pitch Test Copter}
+            \label{fig:firstfpq}
+    \end{figure}  
+   
+
+\clearpage
+
+\section{Completion and Scope Change}
+
+In sprint 2, 79\% of work was completed and the scoop change was 35\%. The scope change was mainly due to the fact that our original plan of using Qualisys as the control system did not work. The group also had plans of making the first fixed pitch quadcopter, but the motors. \\
+\\
+Because of the changes in scope (Fig. \ref{fig:bds2}), some activities in the project plan had to be postponed to sprint 3.
+\\\\
+
+\textbf{Project plan status, sprint 2:}
+
+\begin{itemize}
+    \item 	Electrical Analysis,  \textbf{Done}
+    \item   Electrical Layout,  \textbf{Done}
+    \item   Electrical Construction,  \textbf{Done}
+    \item   Mathematical Model, Fixed Pitch,  \textbf{Done}
+    \item 	Bluetooth Communication With Arduino,  \textbf{Done}
+    \item 	Mechanical Design Plan, Fixed Pitch, \textbf{Done}
+    \item 	Prototype, Fixed Pitch, \textbf{Done}
+   	\item   Flight Controller Software, \textbf{In progress}
+    \item 	Publish Web Page, \textbf{Done}
+\end{itemize}
+
+\begin{figure}[h]
+        \centering
+        \includegraphics[width = 1
+        \textwidth]{VAPIQ-PICTURES//SprintBD2}
+         \caption{Sprint 2 - Burndown Chart}
+        \label{fig:bds2}
+    \end{figure}    
+
+

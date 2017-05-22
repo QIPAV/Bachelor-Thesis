@@ -1,0 +1,52 @@
+\chapter{Sprint 4 - Summary}
+
+Due to limited resources and no working fixed pitch quadcopter, the team utilized the resources available. A set of DJI E600 motors  with 12 inch propellers were borrowed and assembled on a new laser-cut plywood quadcopter (Fig. \ref{fig:plywood} \& \ref{fig:actual}). Our intentions was never to make such a big quadcopter, and had initially limited the propeller size to no more than 11 inches. This was chosen in order to make a quadcopter that is appropriate size to fly indoors and suitable in KIC facilities. At this stage, with limited time and resources to buy new hardware for fixed pitch, we chose to build it in order to have a working quadcopter to test code and actual flight.
+
+\begin{figure}[h]
+        \centering
+         \begin{minipage}[b]{0.4\textwidth}
+            \includegraphics[width = 1\textwidth]{VAPIQ-PICTURES/FixedPitchRender}
+              \caption{SolidWorks model}
+            \label{fig:plywood}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[b]{0.4\textwidth}
+            \includegraphics[width = \textwidth]{VAPIQ-PICTURES/FirstFixedPitch}
+            \caption{Actual Model}
+            \label{fig:actual}
+        \end{minipage}
+\end{figure}
+
+In sprint 4, the group established stable communication with Qualisys and the PC, and can now send multiple data as one packet and decompose it on the Arduino. This will enable us to do the computing off-board with less delay, currently the system can send data at least 10 times per second. The arming sequence for the ESCs was also improved and there is no need to spin the motors through all the activation values to arm. \bigskip
+
+After assembly, the fixed pitch quadcopter had its first flight. The flight was unstable, but after some testing it was realized that there were a few minor logical faults in the code. The team got recommendations to use an IMU called MPU-9250 from a master student with experience in flight controllers. This IMU was difficult to use and registered a lot of noise, but after a couple of days the team managed to reduce the noise.
+
+\clearpage
+
+\section{Completion and Scope Change}
+
+Of all planned tasks 98\%  were completed and there was a scope change of -6\% in total (Fig. \ref{fig:bds4}). The negative scope change is due to some tasks which were duplicated in sprint planning.
+
+\textbf{Project plan status, sprint 4:}
+        
+    \begin{itemize}
+        \item Prototype, Variabel Pitch, \textbf{Done} (Mechanisms produced to little thrust and quadcopter was to heavy)
+        \item Matlab and Simulink Simulation, \textbf{Done}
+        \item Stabilization And Regulation, \textbf{In progress}
+        \item Tweak Flight Controller, Fixed Pitch, \textbf{Done}
+    \end{itemize}
+        
+        
+
+\begin{figure}[h]
+    \centering
+         \includegraphics[width = 1\textwidth]{VAPIQ-PICTURES/BDSprint4}
+      \caption{Sprint 4 - Burndown Chart}
+    \label{fig:bds4}
+\end{figure} 
+
+
+%\subsection{Results and Conclusions}
+
+%One of the biggest challenges in sprint 4 was noise and disturbance in the IMU. This caused the team to use a lot of time on filtration, vibration dampening and calibration to get stable sensor data.
+

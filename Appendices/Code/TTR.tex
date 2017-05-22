@@ -1,0 +1,82 @@
+\section{Thrust Test Rig Code}
+
+
+\begin{lstlisting}
+
+#include <Servo.h>
+
+Servo servo;  // create servo object to control a servo
+Servo motor;
+
+int potpin = 0;  // analog pin used to connect the potentiometer
+int potpin2 = 1;
+int val;    // variable to read the value from the analog pin
+int speedval;
+int min_pwm = 1400;
+int desired_pwm = 1400;
+
+void setup()
+{
+  pinMode(3, OUTPUT);
+  motor.attach(3);
+  servo.attach(9);  // attaches the servo on pin 9 to the servo object
+  Serial.begin(9600);
+  armMotors();
+}
+
+void loop() {
+// reads the value of the potentiometer (value between 0 and 1023) 
+ val = analogRead(potpin);            
+        // scale it to use it with the servo (value between 0 and 180) 
+        val = map(val, 0, 1023, 65.00, 95.00);    
+        servo.write(val);                  
+        // sets the servo position according to the scaled value 
+        speedval = analogRead(potpin2);
+        speedval = map(speedval, 0, 1023, 1000, 2000);
+        motor.writeMicroseconds(speedval);
+        Serial.print("Servo: "); 
+        Serial.println(val);
+        Serial.print("Motorspeed: ");
+        Serial.println(speedval);
+        delay(15);  // waits for the servo to get there   
+}
+/*
+void loop() 
+{ 
+  for(int i = 1000; i < 1500; i = i + 1) {
+    motor.writeMicroseconds(i);
+    delay(25);
+    //Serial.println(i);
+  }  
+  for( int k = 1500; k > min_pwm; k = k - 1) {
+    motor.writeMicroseconds(k);
+    delay(25);
+    //Serial.println(k);
+    
+   while( k == min_pwm + 5 ) {
+        // reads the value of the potentiometer (value between 0 and 1023) 
+        val = analogRead(potpin);   
+        // scale it to use it with the servo (value between 0 and 180) 
+        val = map(val, 0, 1023, 0, 180); 
+        // sets the servo position according to the scaled value 
+        servo.write(val);                  
+        speedval = analogRead(potpin2);
+        speedval = map(speedval, 0, 1023, 700, 2300);
+        motor.writeMicroseconds(speedval);
+        Serial.print("Servo: "); 
+        Serial.println(val);
+        Serial.print("Motorspeed: ");
+        Serial.println(speedval);
+        delay(15);  // waits for the servo to get there 
+  }
+ }
+} 
+*/
+
+void armMotors() {
+  int arm = 1000;
+  motor.writeMicroseconds(arm);
+  delay(3000);
+}
+
+\end{lstlisting}

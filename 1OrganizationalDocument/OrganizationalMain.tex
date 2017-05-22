@@ -1,0 +1,72 @@
+\cleartoleftpage
+{
+\Hide
+\part{Organizational Document}
+}
+\vapiqtitle{Organizational Document} \bigskip
+%% DOCUMENT HISTORY TABLE
+%%%% VERSION NUMBER SHOULD ALWAYS BE THE SAME AS THE COMMENT WHEN SYNCED TO GITHUB %%%%%%%%%%%%%%%
+\begin{center}
+\textbf{\Large Document History}\\
+\begin{tabular}{cllll}
+\rowcolor{cadetgrey}
+\textbf{Version:}    &\textbf{Date:} 	 &\textbf{Comment:}    &\textbf{Done by:}   &\textbf{Approved by:}  \\
+0.0       & $04.05.17$       & Started Merging of documents  & SF    & SF          \\\rowcolor{gainsboro}
+
+
+\end{tabular}                                                                   
+\end{center}
+
+\vspace*{3.0 cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+% ABSTRACT
+%\subfile{1OrganizationalDocument/0ProjectAbstract}
+%\newpage
+
+% LIST OF STUFF
+\setcounter{section}{0}
+\setcounter{secnumdepth}{2}
+
+\startcontents  
+\setcounter{tocdepth}{2}
+\chapter*{\contentsname}
+\printcontents{}{0}{}
+
+\vspace*{1cm}
+
+\startlist{lof}
+\printlist{lof}{}{{\large\textbf{List of Figures}}}
+\vspace*{1cm}
+\startlist{lot}
+\printlist{lot}{}{{\large\textbf{List of Tables}}}
+\newpage
+
+% INTRODUCTION 
+\subfile{1OrganizationalDocument/1introduction}
+\newpage
+
+%% Chapters
+
+\subfile{1OrganizationalDocument/3groupmembers}
+\newpage
+
+\subfile{1OrganizationalDocument/4supervisors}
+\newpage
+
+\subfile{1OrganizationalDocument/5organization}
+\newpage
+
+\subfile{1OrganizationalDocument/6projectplan}
+\newpage
+
+%% References
+%\subfile{sections/references}
+%\newpage
+
+\stopcontents
+\stoplist{lof}
+\stoplist{lot}
